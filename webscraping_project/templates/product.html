@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>{{ product['title'] }}</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+
+<header>
+    <a class="btn" href="/">Home</a>
+    <button class="btn" onclick="history.back()">Back</button>
+</header>
+
+<div class="product-detail">
+    <img src="{{ product['image'] }}">
+    <div>
+        <h2>{{ product['title'] }}</h2>
+        <p>Brand: {{ product['brand'] }}</p>
+        <p>Category: {{ product['subcategory'] }}</p>
+        <p>₹ {{ product['price'] }}</p>
+        <p>{{ product['description'] }}</p>
+    </div>
+</div>
+
+</body>
+</html>
+

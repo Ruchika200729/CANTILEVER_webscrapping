@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>ShopEase</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+
+<header>
+    <h1><a href="/" class="home-link">ShopEase</a></h1>
+
+    <form method="get">
+        <input type="text" name="q" placeholder="Search products">
+        <button type="submit">Search</button>
+    </form>
+
+    <nav>
+        <a class="btn" href="/">Home</a>
+    </nav>
+</header>
+
+<div class="layout">
+
+<aside>
+    <h3>Categories</h3>
+    <ul>
+        {% for c in categories %}
+        <li><a href="/?category={{ c }}">{{ c }}</a></li>
+        {% endfor %}
+    </ul>
+
+    <h3>Recent Searches</h3>
+    <ul>
+        {% for h in history %}
+        <li>{{ h }}</li>
+        {% endfor %}
+    </ul>
+</aside>
+
+<main class="products">
+    {% for p in products %}
+    <div class="card">
+        <img src="{{ p['image'] }}">
+        <h4>{{ p['title'] }}</h4>
+        <p class="brand">Brand: {{ p['brand'] }}</p>
+        <p class="price">₹ {{ p['price'] }}</p>
+        <div class="actions">
+            <a class="btn" href="/product/{{ p['id'] }}">View</a>
+        </div>
+    </div>
+    {% endfor %}
+</main>
+
+</div>
+</body>
+</html>
+  
